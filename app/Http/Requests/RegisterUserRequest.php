@@ -20,8 +20,8 @@ class RegisterUserRequest extends ApiRequest
             "last_name" => ["required"],
             "login" => ["required","unique:users"],
             "email" => ["required","email","unique:users"],
-            "birthday" => ["required"],
-            "password" => ["required", "min:8"],
+            "birthday" => ["required","date_format:Y-m-d"],
+            "password" => ["required", "min:8", "confirmed"]
         ];
     }
 }
