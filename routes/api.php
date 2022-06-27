@@ -24,3 +24,14 @@ use Illuminate\Support\Facades\Route;
 
 Route::post('/register', 'App\Http\Controllers\Api\v1\UserController@register'); // Register
 Route::post('/login', 'App\Http\Controllers\Api\v1\UserController@login'); // login
+
+/*
+ * Film routes
+ */
+
+Route::group(['middleware' => ['auth']], function () {
+    Route::post('/add-film', 'App\Http\Controllers\Api\v1\FilmController@addFilm'); // Add film
+});
+Route::get('/films','\App\Http\Controllers\Api\v1\FilmController@getFilms');
+Route::get('/getAllCategories', '\App\Http\Controllers\Api\v1\FilmController@getGanre');
+Route::post('/getFilms', 'App\Http\Controllers\Api\v1\FilmController@searchFilms');
